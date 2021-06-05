@@ -1,0 +1,101 @@
+octave:3> 
+octave:3> t = linspace(0, 6*pi, 50);
+octave:4> r = 2;
+octave:5> x = r * (t - sin(t));
+octave:6> y = r * (1 - cos(t));
+octave:7> plot(x, y)
+octave:8> axis([0 12*pi 0 4])
+octave:9> axis('equal')
+octave:10> savefig cycloid.pdf
+octave:11> print -dpdf cycloid.pdf
+octave:12> print -dpng cycloid.png
+octave:13> 
+octave:13> 
+octave:13> theta = linspace(0, 2*pi, 100);
+octave:14> r = 1-2*sin(theta);
+octave:15> x = r .* cos(theta);
+octave:16> y = r .* sin(theta);
+octave:17> clf
+octave:18> plot(x, y)
+octave:19> print -dpdf limacon.pdf
+octave:20> print -dpng limacon.png
+octave:21> 
+octave:21> 
+octave:21> theta = linspace(0, 2*pi, 50);
+octave:22> r = 1-2*sin(theta);
+octave:23> polar(theta, r)
+octave:24> print -dpdf limacon-polar.pdf
+octave:25> print -dpng limacon-polar.png
+
+
+octave:27> f = @(x, y) -x .^ 2 - x .* y + x + y.^2 -y-1
+f =
+
+@(x, y) -x .^ 2 - x .* y + x + y .^ 2 - y - 1
+
+octave:28> ezplot(f)
+octave:29> print -dpdf impl1.pdf
+octave:30> 
+octave:30> 
+octave:30> f = @(x, y) (x-2).^2+y.^2-25;
+octave:31> ezplot(f, [-6 10 -8 8])
+octave:32> x = [-6:10];
+octave:33> y = 3/4*x+19/4;
+octave:34> hold on
+octave:35> plot(x, y, 'r--')
+octave:36> print -dpdf impl2.pdf
+
+octave:40> z1 = 1+2*i;
+octave:41> z2 = 2-3*i;
+octave:42> z1+z2
+ans =  3 - 1i
+octave:43> z1*z2
+ans =  8 + 1i
+octave:44> z1/z2
+ans = -0.3077 + 0.5385i
+octave:45> 
+octave:45> clf
+octave:46> z1 = 1+2*i;
+octave:47> z2 = 2-3*i;
+octave:48> compass(z1, 'b')
+octave:49> hold on
+octave:50> compass(z2, 'r')
+octave:51> compass(z1+z2, 'k--')
+octave:52> legend('z_1', 'z_2', 'z_1+z_2')
+octave:53> print -dpdf comlex.pdf
+octave:54> 
+octave:54> 
+octave:54> (-8)^(1/3)
+ans =  1.0000 + 1.7321i
+octave:55> ans^3
+ans = -8.0000e+00 + 2.2204e-15i
+octave:56> nthroot(-8, 3)
+ans = -2
+octave:57> 
+octave:57> 
+octave:57> n = [0:1:5];
+octave:58> x = linspace(-5, 5, 500);
+octave:60> clf
+octave:61> plot(n, factorial(n), '*', x, gamma(x+1))
+octave:62> axis([-5 6 -10 25]);
+octave:63> grid on
+octave:64> legend('n!', 'gamma(x+1)')
+octave:65> print -dpdf gamma.pdf
+octave:66> clf
+octave:67> x1 = linspace(-5, -4, 500);
+octave:68> x2 = linspace(-4, -3, 500);
+octave:69> x3 = linspace(-3, -2, 500);
+octave:70> x4 = linspace(-2, -1, 500);
+octave:80> x5 = linspace(-1, 5, 500);
+octave:81> clf
+octave:86> plot(x1, gamma(x1+1))
+octave:87> hold on
+octave:88> plot(x2, gamma(x2+1))
+octave:89> plot(x3, gamma(x3+1))
+octave:90> plot(x4, gamma(x4+1))
+octave:91> plot(x5, gamma(x5+1))
+octave:92> axis([-5 6 -10 25]);
+octave:93> plot(n, factorial(n), '*')
+octave:94> legend('n!', "\\Gamma(n+1)")
+octave:95> print -dpdf gamma2.pdf
+octave:96> diary
